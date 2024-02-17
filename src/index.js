@@ -1,6 +1,8 @@
 require('./settings/setting.env');
 const {Client, IntentsBitField, Message} =require('discord.js');
-
+const data = require("fs").readFileSync("./src/data.json");
+const jsonObject = JSON.parse(data);
+console.log(jsonObject[0].name);
 
 
 const client = new Client({
