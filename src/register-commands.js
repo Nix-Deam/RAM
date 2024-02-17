@@ -1,4 +1,5 @@
 require('./settings/setting.env');
+//require('commands.json');
 const{REST, Routes}=require('discord.js');
 
 const commands=[
@@ -9,8 +10,34 @@ const commands=[
     {
         name:`ping`,
         description:`PONG`,
-    }
-];
+    },
+    {
+        name:'roll20',
+        description: 'Rolls a D20',
+    },
+    {
+        name:'roll12',
+        description: 'Rolls a D12',
+    },
+    {
+        name:'roll10',
+        description: 'Rolls a D10',
+    },
+    {
+        name:'roll8',
+        description: 'Rolls a D8',
+    },
+    {
+        name:'roll6',
+        description: 'Rolls a D6',
+    },
+    {
+        name:'roll4',
+        description: 'Rolls a D4',
+    },
+]
+
+
 const rest= new REST({version: '10'}).setToken(TOKEN);
 (async ()=>{
     try{
