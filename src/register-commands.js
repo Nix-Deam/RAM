@@ -37,8 +37,16 @@ const commands=[
     },
     {
         name:'dndplayerstart5e',
-        description: 'This is the start to your character for dnd. This guide will take you through the steps.'
-    }
+        description: 'This is the start to your character for dnd. This guide will take you through the steps.',
+    },
+    {
+        name: 'coinflip',
+        description:'flips a coin heads or tails',
+    },
+    {
+        name:'roll100',
+        description: 'Rolls a D100 (minus the chasing of the dice)',
+    },
 ]
 
 

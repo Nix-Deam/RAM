@@ -20,7 +20,7 @@ client.on('interactionCreate',(interaction)=>{
    // if(!interaction.isCommand())return;
     console.log(interaction.commandName)
     let set=interaction.commandName;
-    if(set.substr(0,4)=='roll'){
+    if(set.substr(0,4)=='roll'||set==='coinflip'){
         switch(set){
             case "roll4":
             interaction.reply(`${Math.floor(Math.random()*4)+1}`);
@@ -49,6 +49,17 @@ client.on('interactionCreate',(interaction)=>{
                 interaction.reply(`${nat20}`);
             }
             break;
+        case "coinflip":
+            let flip=Math.floor(Math.random()*2);
+            if(flip==1){
+                interaction.reply('Heads')
+            }
+            else{
+                interaction.reply('Tails')
+            }
+            break;
+        case "roll100":
+            interaction.reply(`${Math.floor(Math.random()*100)+1}`);
         }
     }
     switch(set){
