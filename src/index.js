@@ -9,9 +9,6 @@ console.log(jsonObject[0].name);
 
 
 
-
-
-
 //This is what the bot had access too in server 'Guild' is just server
 const client = new Client({
     intents:[
@@ -23,12 +20,13 @@ const client = new Client({
 });
 
 
-
 //This just console logs when the bot is offically ready
 client.on('ready',(c)=>{
     console.log(`🐏 ${c.user} is online`);
 })
 
+
+//This take in all the Slash commands
 client.on('interactionCreate',(interaction)=>{
    // if(!interaction.isCommand())return;
     console.log(interaction.commandName)
@@ -87,6 +85,8 @@ client.on('interactionCreate',(interaction)=>{
             break;
         case "dndplayerstart5e":
             interaction.reply({content:'This is the start to your epic adventure', ephemeral:true })
+            //console.log(interaction.user.id)
+            client.users.send(`${interaction.user.id}`, 'Lets build your character here!');
             break;
         }
 })
@@ -94,12 +94,17 @@ client.on('interactionCreate',(interaction)=>{
 
 //This just replies to anyone that writes the words hello with hello/ will not reply to itself
 client.on('messageCreate',(msg)=>{
+    //console.log(msg)
     console.log(`${msg.author.username}/ ${msg.author.id}: ${msg.content}`)
     if(msg.content=== 'hello'&& msg.author.id != '947623521037746216'){
         msg.reply('hello')
+        // client.users.send(`${msg.author.id}`, 'content'); <---- This DMs a person
+        //msg.channel.send('test') <---- This just sends a msg to the server without a reply
+    }
+    if(msg.content=='stats'){
+        msg.reply(`${jsonObject[0].id}`)
     }
     
-
 })
 
 
@@ -109,11 +114,6 @@ client.on('messageCreate',(msg)=>{
 function ran(num){
     return(Math.floor(Math.random()*num)+1);
 }
-
-
-
-
-
 
 
 
