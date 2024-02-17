@@ -35,6 +35,10 @@ const commands=[
         name:'roll4',
         description: 'Rolls a D4',
     },
+    {
+        name:'dndplayerstart5e',
+        description: 'This is the start to your character for dnd. This guide will take you through the steps.'
+    }
 ]
 
 

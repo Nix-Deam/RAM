@@ -1,7 +1,6 @@
 require('./settings/setting.env');
 const {Client, IntentsBitField, Message} =require('discord.js');
 
-let happyScore=100;
 
 
 const client = new Client({
@@ -59,17 +58,16 @@ client.on('interactionCreate',(interaction)=>{
         case "ping":
             interaction.reply('PONG')
             break;
-        
+        case "dndplayerstart5e":
+            interaction.reply({content:'This is the start to your epic adventure', ephemeral:true })
+
+
+
+
+            break;
         }
 })
 
-
-
-// client.on('messageCreate',(msg)=>{
-//     let sent= msg.content
-//     sent.map(happyScoreDown())
-//     console.log(happyScore)
-// })
 
 
 client.on('messageCreate',(msg)=>{
@@ -77,19 +75,9 @@ client.on('messageCreate',(msg)=>{
     if(msg.content=== 'hello'&& msg.author.id != '947623521037746216'){
         msg.reply('hello')
     }
-    //dice roll
-    //if(msg.content==='Roll')
+    
 
 })
-// let bwords=['fuck','shit','cunt']
-
-// function happyScoreDown(msg){
-//     for(let i=0;i<bwords.length;i++){
-//         if(msg==bwords[i]){
-//             return happyScore=happyScore-1
-//         }
-//     }
-// }
 
 
 
