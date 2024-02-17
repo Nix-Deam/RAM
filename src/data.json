@@ -1,0 +1,24 @@
+[
+    {
+        "name": "Test",
+        "meta": "Lawful Good",
+        "armor": "5",
+        "Hit Points":"20",
+        "Speed": "3",
+        "STR": "21",
+        "STR_mod": "(+5)",
+        "DEX": "9",
+        "DEX_mod": "(-1)",
+        "CON": "15",
+        "CON_mod": "(+2)",
+        "INT": "18",
+        "INT_mod": "(+4)",
+        "WIS": "15",
+        "WIS_mod": "(+2)",
+        "CHA": "18",
+        "CHA_mod": "(+4)",
+        "Saving Throws": "CON +6, INT +8, WIS +6",
+        "Skills": "History +12, Perception +10",
+        "Languages": "Deep Speech, Telepathy 120 ft."
+    }
+]
