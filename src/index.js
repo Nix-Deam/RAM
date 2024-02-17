@@ -1,10 +1,18 @@
 require('./settings/setting.env');
 const {Client, IntentsBitField, Message} =require('discord.js');
 const data = require("fs").readFileSync("./src/data.json");
+
+
+//Reads data.json file and assigns it to jsonObject
 const jsonObject = JSON.parse(data);
 console.log(jsonObject[0].name);
 
 
+
+
+
+
+//This is what the bot had access too in server 'Guild' is just server
 const client = new Client({
     intents:[
         IntentsBitField.Flags.Guilds,
@@ -14,6 +22,9 @@ const client = new Client({
     ]
 });
 
+
+
+//This just console logs when the bot is offically ready
 client.on('ready',(c)=>{
     console.log(`🐏 ${c.user} is online`);
 })
@@ -22,25 +33,27 @@ client.on('interactionCreate',(interaction)=>{
    // if(!interaction.isCommand())return;
     console.log(interaction.commandName)
     let set=interaction.commandName;
+    
+    //If statement checks to see if requesting a roll/coinflip. This is just to speed up the bot so next switch statement wont be too full.
     if(set.substr(0,4)=='roll'||set==='coinflip'){
         switch(set){
             case "roll4":
-            interaction.reply(`${Math.floor(Math.random()*4)+1}`);
+            interaction.reply(`${ran(4)}`)
             break;
         case "roll6":
-            interaction.reply(`${Math.floor(Math.random()*6)+1}`);
+            interaction.reply(`${ran(6)}`)
             break;
         case "roll8":
-            interaction.reply(`${Math.floor(Math.random()*8)+1}`);
+            interaction.reply(`${ran(8)}`)
             break;
         case "roll10":
-            interaction.reply(`${Math.floor(Math.random()*10)+1}`);
+            interaction.reply(`${ran(10)}`)
             break;
         case "roll12":
-            interaction.reply(`${Math.floor(Math.random()*12)+1}`);
+            interaction.reply(`${ran(12)}`)
             break;
         case "roll20":
-            let nat20=Math.floor(Math.random()*20)+1
+            let nat20=ran(20)
             if(nat20==20){
                 interaction.reply(`CRITICAL HIT! \nYou rolled a ${nat20}`)
             }
@@ -52,8 +65,8 @@ client.on('interactionCreate',(interaction)=>{
             }
             break;
         case "coinflip":
-            let flip=Math.floor(Math.random()*2);
-            if(flip==1){
+            let flip=ran(2);
+            if(flip==2){
                 interaction.reply('Heads')
             }
             else{
@@ -61,7 +74,8 @@ client.on('interactionCreate',(interaction)=>{
             }
             break;
         case "roll100":
-            interaction.reply(`${Math.floor(Math.random()*100)+1}`);
+            interaction.reply(`${ran(100)}`);
+            break;
         }
     }
     switch(set){
@@ -73,16 +87,12 @@ client.on('interactionCreate',(interaction)=>{
             break;
         case "dndplayerstart5e":
             interaction.reply({content:'This is the start to your epic adventure', ephemeral:true })
-
-
-
-
             break;
         }
 })
 
 
-
+//This just replies to anyone that writes the words hello with hello/ will not reply to itself
 client.on('messageCreate',(msg)=>{
     console.log(`${msg.author.username}/ ${msg.author.id}: ${msg.content}`)
     if(msg.content=== 'hello'&& msg.author.id != '947623521037746216'){
@@ -95,6 +105,10 @@ client.on('messageCreate',(msg)=>{
 
 
 
+//function is to set randomness and is called by all rolls/coinflip. Returns any random value between 1-num
+function ran(num){
+    return(Math.floor(Math.random()*num)+1);
+}
 
 
 
@@ -104,5 +118,5 @@ client.on('messageCreate',(msg)=>{
 
 
 
-
+//turns on the bot offically
 client.login(TOKEN);
